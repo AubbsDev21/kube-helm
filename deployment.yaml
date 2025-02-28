@@ -26,10 +26,4 @@ spec:
         envFrom:
           - configMapRef:
               name: myconfigmapv1.0
-        resources:
-          limits:
-            cpu: "500m"
-            memory: "6Mi"
-          requests:
-            cpu: 200m
-            memory: "4Mi"
+       
