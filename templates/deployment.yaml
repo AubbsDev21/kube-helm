@@ -24,6 +24,14 @@ spec:
         ports:
         - containerPort: 80
         envFrom:
-          - configMapRef:
-              name: {{ .Values.configMapName }}
-       
+        - configMapRef:
+          name: {{ .Values.configMapName }}
+        {{ if eq .Values.labels.environment "Production"}}
+        resources:
+          requests:
+            memory: "16Mi" 
+            cpu: "50m"    # 50 milli cores (1/20 CPU)
+          limits:
+            memory: "128Mi" # 128 mebibytes 
+            cpu: "100m"
+        {{ end }}    
